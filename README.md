@@ -52,14 +52,18 @@ Example
 
 Notes
 -----
-You need <b>bc</b> installed:
+Don't forget to make the scripts executable:
+
+     chmod +x sript_name.sh
+
+You'll need <b>bc</b> installed:
 
      sudo apt-get install bc
 
 Usage with motioneye
 --------------------
 Current (2016/07/06) version of <a href="https://github.com/ccrisan/motioneye" target="_blank">motioneye</a> only offers a limited way of interfacing external/custom commands... via action buttons - see <a href="https://github.com/ccrisan/motioneye/wiki/Action-Buttons" target="_blank">here</a>.
-And you can use this to call your scripts, which move the camera.
+And you can use this to call your scripts, which move the camera :)
 
 I've set that up using the scripts in [examples](/examples/) folder like this:
 
