@@ -1,23 +1,23 @@
 PiPan Cam
 =========
 
-A set of scripts used to control a pan-tilt camera setup on Raspberry Pi running pi-blaster.
+A set of scripts used to control a pan-tilt camera setup on Raspberry Pi running <a href="https://github.com/sarfata/pi-blaster/" target="_blank">pi-blaster</a> and optionally <a href="https://github.com/ccrisan/motioneye" target="_blank">motioneye</a>.
 
 ![Setup example](/setup_example2.jpg)
 
 Prerequisites
 =============
  - <a href="https://www.raspberrypi.org/products/" target="_blank">Raspberry Pi</a> with a Camera (eg. <a href="https://www.raspberrypi.org/products/camera-module-v2/" target="_blank">this</a>)
- - a pan-tilt setup (platform with servos) [<a href="https://www.google.com/search?q=Pan%2FTilt+Camera+Platform" target="_blank">you google it</a>]
+ - a pan-tilt setup (platform with servos) <i>[<a href="https://www.google.com/search?q=Pan%2FTilt+Camera+Platform" target="_blank">you google it</a>]</i>
  - installed <a href="https://github.com/sarfata/pi-blaster/" target="_blank">pi-blaster</a>
 
 Features and usage
 ==================
-There are two main scripts, which do the work...
+There are two main scripts, which do the work ...
 
 pipan_set.sh
 ------------
-This script sets a specific position of the camera according passed arguments in PWM %.
+This script sets a specific position of the camera according to passed arguments in PWM %.
 
 But first change the script with your defaults:
 
@@ -38,10 +38,10 @@ Example
 
 pipan_step.sh
 -------------
-This script moves the camera by steps accordingto passed arguments.
+This script moves the camera by steps according to passed arguments.
 
 But first change the script with your defaults:
-(two more than in previous script)
+<br/>(two more than in previous script)
 
      v_step="0.005"         # one vertical step
      h_step="0.005"         # one horizontal step
@@ -54,13 +54,14 @@ Notes
 -----
 You need <b>bc</b> installed:
 
-   sudo apt-get install bc
+     sudo apt-get install bc
 
 Usage with motioneye
 --------------------
 Current (2016/07/06) version of <a href="https://github.com/ccrisan/motioneye" target="_blank">motioneye</a> only offers a limited way of interfacing external/custom commands... via action buttons - see <a href="https://github.com/ccrisan/motioneye/wiki/Action-Buttons" target="_blank">here</a>.
 And you can use this to call your scripts, which move the camera.
-I've set that up using the scripts in [examples](/examples/) like this:
+
+I've set that up using the scripts in [examples](/examples/) folder like this:
 
      sudo cp <.yourfolder.>/PiPan_Cam/examples/pipan_go_home.sh /etc/motioneye/lock_1
      sudo cp <.yourfolder.>/PiPan_Cam/examples/pipan_step_left.sh /etc/motioneye/light_on_1
@@ -70,12 +71,11 @@ I've set that up using the scripts in [examples](/examples/) like this:
 
 License
 =======
-MIT License (MIT)
-see [here](LICENSE.txt)
+MIT License (MIT) - see [here](LICENSE.txt)
 
 Change Log
 ==========
-**1.0 - Jul 06, 2016**
+**v 1.0 - Jul 06, 2016**
 
  - Initial version
  
