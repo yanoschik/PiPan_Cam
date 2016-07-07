@@ -1,28 +1,25 @@
 PiPan Cam
 =========
 
-A set of scripts used to control a pan-tilt camera setup on Raspberry Pi running <a href="https://github.com/sarfata/pi-blaster/" target="_blank">pi-blaster</a> and optionally with <a href="https://github.com/ccrisan/motioneye" target="_blank">motioneye</a>.
+A set of scripts used to control a pan-tilt camera setup on Raspberry Pi running [pi-blaster](https://github.com/sarfata/pi-blaster/) and optionally with [motioneye](https://github.com/ccrisan/motioneye).
 
 ![Setup example 1](/setup_example1.jpg)
 ![Setup example 2](/setup_example2.jpg)
 
 
-Prerequisites
-=============
- - <a href="https://www.raspberrypi.org/products/" target="_blank">Raspberry Pi</a> with a Camera (eg. <a href="https://www.raspberrypi.org/products/camera-module-v2/" target="_blank">this</a>)
- - a pan-tilt setup: platform (<i><a href="https://www.google.com/search?q=Pan%2FTilt+Camera+Platform" target="_blank">you google it</a></i>) and servos (eg. <i><a href="https://www.google.com/search?q=SG90+servo" target="_blank">SG90<a/></i>)
- - installed <a href="https://github.com/sarfata/pi-blaster/" target="_blank">pi-blaster</a>
+## Prerequisites
+ - [Raspberry Pi](https://www.raspberrypi.org/products/) with a Camera (eg. [this](https://www.raspberrypi.org/products/camera-module-v2/))
+ - a pan-tilt setup: platform ([you google it](https://www.google.com/search?q=Pan%2FTilt+Camera+Platform)) and servos (eg. [SG90](https://www.google.com/search?q=SG90+servo))
+ - installed [pi-blaster](https://github.com/sarfata/pi-blaster/)
 
-Features and usage
-==================
+## Features and usage
 There are two main scripts, which do the work ...
 <br/>Their job is to move the servos while watching limiting values and to keep track of the current position.
 
-pipan_set.sh
-------------
+### pipan_set.sh
 This script sets a specific position of the camera according to passed arguments in PWM %.
 
-<b>But first change the script with your defaults:</b>
+**But first change the script with your defaults:**
 <br/>(You have to set the pins used for your servos and determine the limiting values where servos can reach - simply by shifting small steps.)
 
      ENABLED=1              # enables pi-blaster calls (set to 0 for testing)
@@ -36,44 +33,41 @@ This script sets a specific position of the camera according to passed arguments
      h_max="0.285"          # horizontal max value (left for me)
      h_min="0.06"           # horizontal min value (right for me)
 
-<b>Example</b>
+**Example**
 
      sh pipan_set.sh 0.12 0.2
 
-pipan_step.sh
--------------
+### pipan_step.sh
 This script moves the camera by steps according to passed arguments.
 <br/>Use positive and negative whole numbers.
 
-<b>But first change the script with your defaults:</b>
-<br/><i>(two more than in previous script)</i>
+**But first change the script with your defaults:**
+<br/>*(two more than in previous script)*
 
      v_step="0.005"         # one vertical step
      h_step="0.005"         # one horizontal step
 
-<b>Example</b>
+**Example**
 
      sh pipan_step.sh 2 -5 
 
-<i>That would move my camera two steps down and five steps right.</i>
+*That would move my camera two steps down and five steps right.*
 
-Notes
------
+### Notes
 Don't forget to make the scripts executable:
 
      chmod +x sript_name.sh
 
-You'll need <b>bc</b> installed:
+You'll need **bc** installed:
 
      sudo apt-get install bc
 
-If you run into problems with starting pi-blaster like <a href="https://github.com/sarfata/pi-blaster/issues/68" target="_blank">this</a>, <a href="https://github.com/sarfata/pi-blaster/issues/72" target="_blank">this</a>, or <a href="https://github.com/sarfata/pi-blaster/issues/71" target="_blank">this</a> ... You'll have to create the default config with:
+If you run into problems with starting pi-blaster like [this](https://github.com/sarfata/pi-blaster/issues/68), [this](https://github.com/sarfata/pi-blaster/issues/72), or [this](https://github.com/sarfata/pi-blaster/issues/71) ... You may have to create the default config with:
 
      touch /etc/default/pi-blaster
 
-Usage with motioneye
---------------------
-Current (2016/07/06) version of <a href="https://github.com/ccrisan/motioneye" target="_blank">motioneye</a> only offers a limited way of interfacing external/custom commands... via action buttons - see <a href="https://github.com/ccrisan/motioneye/wiki/Action-Buttons" target="_blank">here</a>.
+### Usage with motioneye
+Current (2016/07/06) version of [motioneye](https://github.com/ccrisan/motioneye) only offers a limited way of interfacing external/custom commands... via action buttons - see [here](https://github.com/ccrisan/motioneye/wiki/Action-Buttons).
 <br/>And you can use this to call your scripts, which move the camera simply by clicking buttons within the camaera view :)
 
 I've set that up using the scripts in [examples](/examples/) folder like this:
@@ -84,18 +78,15 @@ I've set that up using the scripts in [examples](/examples/) folder like this:
      sudo cp <.yourfolder.>/PiPan_Cam/examples/pipan_step_down.sh /etc/motioneye/alarm_on_1
      sudo cp <.yourfolder.>/PiPan_Cam/examples/pipan_step_up.sh /etc/motioneye/alarm_off_1
 
-License
-=======
+## License
 MIT License (MIT) - see [here](LICENSE.txt)
 
-Change Log
-==========
+## Change Log
 **v 1.0 - Jul 06, 2016**
 
- - Initial version
+* Initial version
 
-Future plans / TODOs
---------------------
+### Future plans / TODOs
 
- -  moving by degrees and to a specific degree
+- [ ] moving by degrees and to a specific degree
  
