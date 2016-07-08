@@ -1,7 +1,7 @@
 PiPan Cam
 =========
 
-A set of scripts used to control a pan-tilt camera setup on Raspberry Pi running [pi-blaster](https://github.com/sarfata/pi-blaster/) and optionally with [motioneye](https://github.com/ccrisan/motioneye).
+A set of simple scripts used to control a pan-tilt camera setup on Raspberry Pi running [pi-blaster](https://github.com/sarfata/pi-blaster/) and optionally with [motioneye](https://github.com/ccrisan/motioneye).
 
 ![Setup example 1](/setup_example1.jpg)
 ![Setup example 2](/setup_example2.jpg)
@@ -51,12 +51,51 @@ This script moves the camera by steps according to passed arguments.
 
      sh pipan_step.sh 2 -5 
 
-*That would move my camera two steps down and five steps right.*
+*That would move my camera two steps down and five steps right (camera view).*
+
+---
+The second set of scripts is similar, just use input in degrees. 
+
+### pipan_set_dg.sh
+This script sets a specific position of the camera according to passed arguments in (relative) degrees.
+<br/>Use values 0 to 180 _(or according to your defaults)_.
+
+**But first change the script with your defaults:**
+<br/>*(two more than in first script)*
+
+     dg_min="0"             # degrees min value
+     dg_max="180"           # degrees max value
+     deci="4"               # decimals for rounding the result [internal]
+
+Script actually re-maps your min/max pwm values to min/max degrees.
+
+**Example**
+
+     sh pipan_set_dg.sh 90 90 
+
+*That would move both servos in the middle of their range.*
+
+### pipan_step_dg.sh
+This script moves the camera by steps in (relative) degrees.
+<br/>Use positive and negative whole numbers.
+
+**But first change the script with your defaults:**
+<br/>*(two more than in first script)*
+
+     dg_min="0"             # degrees min value
+     dg_max="180"           # degrees max value
+     deci="4"               # decimals for rounding the result [internal]
+
+**Example**
+
+     sh pipan_step_dg.sh 0 8 
+
+*That would move my camera eight degrees left (camera view).*
 
 ### Notes
 Don't forget to make the scripts executable:
 
-     chmod +x sript_name.sh
+     chmod +x script_name.sh
 
 You'll need **bc** installed:
 
@@ -66,9 +105,11 @@ If you run into problems with starting pi-blaster like [this](https://github.com
 
      touch /etc/default/pi-blaster
 
+Consider powering the servos from an external source and not from the Pi ... especially if you intend to move something heavier (like a bigger camera maybe).
+
 ### Usage with motioneye
 Current (2016/07/06) version of [motioneye](https://github.com/ccrisan/motioneye) only offers a limited way of interfacing external/custom commands... via action buttons - see [here](https://github.com/ccrisan/motioneye/wiki/Action-Buttons).
-<br/>And you can use this to call your scripts, which move the camera simply by clicking buttons within the camaera view :)
+<br/>And you can use this to call your scripts, which move the camera simply by clicking overlay buttons within the camaera view :)
 
 I've set that up using the scripts in [examples](/examples/) folder like this:
 
@@ -82,11 +123,18 @@ I've set that up using the scripts in [examples](/examples/) folder like this:
 MIT License (MIT) - see [here](LICENSE.txt)
 
 ## Change Log
+**v 1.1 - Jul 08, 2016**
+
+* two more scripts - for movement by degrees
+* readme update
+
 **v 1.0 - Jul 06, 2016**
 
 * Initial version
 
 ### Future plans / TODOs
 
-- [ ] moving by degrees and to a specific degree
+- [x] ~~moving by degrees and to a specific degree~~
+- [ ] precision of movement by degree steps
+- [ ] optimization?
  
