@@ -120,6 +120,7 @@ I've set that up using the scripts in [examples](/examples/) folder like this:
      sudo cp <.yourfolder.>/PiPan_Cam/examples/pipan_step_down.sh /etc/motioneye/alarm_on_1
      sudo cp <.yourfolder.>/PiPan_Cam/examples/pipan_step_up.sh /etc/motioneye/alarm_off_1
 
+As of [this update](https://github.com/ccrisan/motioneye/commit/834a68233f8c162b0c77049cbd177ee053876f27), there are new action buttons available - arrows. So you can now rename the scripts: liht_on_1 -> left_1 etc. and move the camera with corresponding arrow buttons.
 
 ## License
 MIT License (MIT) - see [here](LICENSE.txt)
