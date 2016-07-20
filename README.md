@@ -78,6 +78,7 @@ Script actually re-maps your min/max pwm values to min/max degrees.
 ### pipan_step_dg.sh
 This script moves the camera by steps in (relative) degrees.
 <br/>Use positive and negative whole numbers.
+<br/>_[Note: script is currently not very precise]_
 
 **But first change the script with your defaults:**
 <br/>*(two more than in first script)*
@@ -109,7 +110,7 @@ Consider powering the servos from an external source and not from the Pi ... esp
 
 ### Usage with motioneye
 Current (2016/07/06) version of [motioneye](https://github.com/ccrisan/motioneye) only offers a limited way of interfacing external/custom commands... via action buttons - see [here](https://github.com/ccrisan/motioneye/wiki/Action-Buttons).
-<br/>And you can use this to call your scripts, which move the camera simply by clicking overlay buttons within the camaera view :)
+<br/>And you can use this to call your scripts, which move the camera simply by clicking overlay buttons within the camera view :)
 
 I've set that up using the scripts in [examples](/examples/) folder like this:
 
@@ -118,6 +119,7 @@ I've set that up using the scripts in [examples](/examples/) folder like this:
      sudo cp <.yourfolder.>/PiPan_Cam/examples/pipan_step_right.sh /etc/motioneye/light_off_1
      sudo cp <.yourfolder.>/PiPan_Cam/examples/pipan_step_down.sh /etc/motioneye/alarm_on_1
      sudo cp <.yourfolder.>/PiPan_Cam/examples/pipan_step_up.sh /etc/motioneye/alarm_off_1
+
 
 ## License
 MIT License (MIT) - see [here](LICENSE.txt)
